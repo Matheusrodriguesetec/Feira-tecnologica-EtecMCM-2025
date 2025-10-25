@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objetivos de Desenvolvimento Sustentável</title>
+  <style>
+    /* === ESTILO PADRÃO === */
+    * {
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    a {
+      color: #fff;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #3B60A4, #7DB3B3);
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: #d3d8e7;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      background: #314975;
+      font-size: 22px;
+      width: 98.50vw;
+      justify-content: left;
+      padding: 15px;
+      display: flex;
+      left: 8px;
+      top: 10px;
+      gap: 35px;
+      margin: 0;
+      position: relative;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px #0003;
+      transition: all 0.2s ease;
+    }
+
+    nav:hover {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+      transform: translateY(+5px);
+    }
+
+    nav a {
+      color: #fff;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bloquinho-nav {
+      background: #2e3b64;
+      padding: 10px 24px;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px #0003;
+      position: absolute;
+      top: 2px;
+      left: 640px;
+      width: 60px;
+      height: 50px;
+      z-index: 0;
+    }
+
+    p {
+        font-size: 25px;
+        background: #2e3b64;
+        padding: 35px;
+        border-radius: 15px;
+        width: 80%;
+        justify-items:  center;
+        margin: 40px auto;
+    }
+
+    .pdesc {
+        font-size: 35px;
+        text-shadow: 0 0 12px #ffffff;
+        background: #2e3b64;
+        padding: 10px;
+        border-radius: 15px;
+        width: 80%;
+        justify-items:  center;
+        margin: 40px auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 70px;
+      color: #d5dae9;
+      text-shadow: 0 0 10px #d5dae9;
+      animation: brilho 3s infinite ease-in-out;
+    }
+
+    @keyframes brilho {
+      0% { text-shadow: 0 0 10px #d5dae9; }
+      50% { text-shadow: 0 0 25px #d5dae9; }
+      100% { text-shadow: 0 0 10px #d5dae9; }
+    }
+
+    p.intro {
+      background: #23315d;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px #0005;
+      color: #d3d8e7;
+      font-size: 28px;
+      text-align: center;
+      width: 80%;
+      margin: 30px auto;
+    }
+
+    #odsGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 25px;
+      justify-items: center;
+      width: 80%;
+      margin: 40px auto;
+    }
+
+    .ods-item img {
+      width: 160px;
+      height: 160px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .ods-item.escurecido img {
+      filter: brightness(40%) grayscale(40%);
+    }
+
+    .ods-item img:hover {
+      transform: scale(1.08);
+    }
+
+    #descricao {
+      display: none;
+      width: 75%;
+      margin: 30px auto;
+      background: #2e3b64;
+      color: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 16px #0005;
+      animation: aparecer 0.5s ease-in-out;
+    }
+
+    #descricao h2 {
+      margin-bottom: 10px;
+      color: #ffda79;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="bloquinho-nav"></div>
+      <a href="index.html">inicio</a>
+      <a href="sinopse.html">sinopse</a>
+      <a href="autora.html">autora</a>
+      <a href="quiz.html">quiz</a>
+      <a href="personagens inicio.html">personagens</a>
+      <a href="contato.html">contato</a>
+      <a href="ods.html">ods</a>
+    </nav>
+  </header>
+
+  <h1>O.D.S</h1>
+
+  <div class="intro">
+    <p>Os Objetivos de Desenvolvimento Sustentável (ODS) são um conjunto de 17 metas criadas pela Organização das Nações Unidas (ONU) para promover um futuro mais justo, equilibrado e sustentável para todos. Eles abrangem áreas como erradicação da pobreza, educação de qualidade, igualdade de gênero, combate às mudanças climáticas e muito mais. Cada objetivo é um passo importante para garantir um planeta melhor e mais saudável até 2030.</p>
+    <div id="odsGrid"></div>
+  <div id="descricao"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const grid = document.getElementById('odsGrid');
+
+      const descricoes = {
+        1: "Erradicação da pobreza: acabar com a pobreza em todas as suas formas, em todos os lugares.",
+        2: "Fome zero e agricultura sustentável: garantir segurança alimentar e promover a agricultura sustentável.",
+        3: "Saúde e bem-estar: assegurar uma vida saudável e promover o bem-estar para todos.",
+        4: "Educação de qualidade: assegurar educação inclusiva e equitativa de qualidade.",
+        5: "Igualdade de gênero: alcançar a igualdade de gênero e empoderar todas as mulheres e meninas.",
+        6: "Água potável e saneamento: garantir disponibilidade e gestão sustentável da água.",
+        7: "Energia limpa e acessível: assegurar acesso a energia moderna, confiável e sustentável.",
+        8: "Trabalho decente e crescimento econômico: promover o crescimento econômico inclusivo e sustentável.",
+        9: "Indústria, inovação e infraestrutura: construir infraestruturas resilientes e fomentar a inovação.",
+        10: "Redução das desigualdades: reduzir as desigualdades dentro e entre os países.",
+        11: "Cidades e comunidades sustentáveis: tornar as cidades inclusivas, seguras e sustentáveis.",
+        12: "Consumo e produção responsáveis: garantir padrões sustentáveis de consumo e produção.",
+        13: "Ação contra a mudança global do clima: combater a mudança do clima e seus impactos.",
+        14: "Vida na água: conservar e usar de forma sustentável os oceanos e recursos marinhos.",
+        15: "Vida terrestre: proteger, restaurar e promover o uso sustentável dos ecossistemas terrestres.",
+        16: "Paz, justiça e instituições eficazes: promover sociedades pacíficas e inclusivas.",
+        17: "Parcerias e meios de implementação: fortalecer os meios de implementação e revitalizar as parcerias globais."
+      };
+
+      // cria os blocos
+      for (let i = 1; i <= 17; i++) {
+        const div = document.createElement('div');
+        div.className = 'ods-item';
+        div.dataset.index = i;
+
+        const img = document.createElement('img');
+        img.src = `imagens/${i}.png`;
+        img.alt = `ODS ${i}`;
+
+        div.appendChild(img);
+        div.addEventListener('click', () => mostrarDescricao(i, div));
+        grid.appendChild(div);
+      }
+
+      const desc = document.getElementById('descricao');
+
+      function mostrarDescricao(num, elementoClicado) {
+        document.querySelectorAll('.ods-item').forEach(el => el.classList.add('escurecido'));
+        elementoClicado.classList.remove('escurecido');
+
+        desc.innerHTML = `
+          <h2>ODS ${num}</h2>
+          <p class="pdesc">${descricoes[num]}</p>
+          <div style="text-align:right; margin-top:8px;">
+            <button id="limparBtn" style="background:#ffda79;color:#2e3b64;font-weight:bold;border:none;padding:8px 15px;border-radius:8px;cursor:pointer;">Limpar seleção</button>
+          </div>`;
+        desc.style.display = 'block';
+
+        document.getElementById('limparBtn').addEventListener('click', () => {
+          document.querySelectorAll('.ods-item').forEach(el => el.classList.remove('escurecido'));
+          desc.style.display = 'none';
+        });
+      }
+    });
+  </script>
+</body>
+</html>
